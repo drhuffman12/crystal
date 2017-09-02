@@ -1,0 +1,7 @@
+version: '3'
+services:
+  crystal_lang:
+    build: .
+    # build:
+    #   context: ./
+    #   dockerfile: Dockerfile.release
