@@ -1,7 +1,11 @@
+# USAGE:
+#   LLVM_TARGET_VER=3.8 docker-compose build
+#   LLVM_TARGET_VER=3.9 docker-compose build
+#   LLVM_TARGET_VER=4.0 docker-compose build
 version: '3'
 services:
   crystal_lang:
-    build: .
-    # build:
-    #   context: ./
-    #   dockerfile: Dockerfile.release
+    build:
+      context: .
+      args:
+        - LLVM_TARGET_VER
