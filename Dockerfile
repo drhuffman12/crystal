@@ -19,7 +19,7 @@ RUN apt-get update && \
         libevent-dev libssl-dev libxml2-dev libyaml-dev libgmp-dev git wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key| apt-key add - # Fingerprint: 6084 F3CF 814B 57C1 CF12 EFD5 15CF 4D18 AF4F 7421 && \
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key| apt-key add - && \
     apt-get update && \
     apt-get install -y --no-install-recommends llvm-${LLVM_TARGET_VER} llvm-${LLVM_TARGET_VER}-dev clang-${LLVM_TARGET_VER} && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
