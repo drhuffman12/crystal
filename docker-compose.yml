@@ -1,7 +1,21 @@
 # USAGE:
-#   LLVM_TARGET_VER=3.8 docker-compose build
-#   LLVM_TARGET_VER=3.9 docker-compose build
-#   LLVM_TARGET_VER=4.0 docker-compose build
+# * Build (either of the below):
+#   * LLVM_TARGET_VER=3.8 docker-compose build
+#   * LLVM_TARGET_VER=3.9 docker-compose build
+#   * LLVM_TARGET_VER=4.0 docker-compose build
+#
+# * Run:
+#   * docker-compose run crystal_lang
+#     * then check the just compiled version w/in the docker console, e.g.:
+#
+#       ```
+#       root@5d256b74287a:/opt/crystal-head# .build/crystal -v
+#       Crystal HEAD (2017-09-20)
+#
+#       LLVM: 4.0.0
+#       Default target: x86_64-pc-linux-gnu
+#       ```
+#
 version: '3'
 services:
   crystal_lang:
