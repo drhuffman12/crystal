@@ -2,6 +2,7 @@
 # * Set LLVM version desired:
 #   $ export LLVM_TARGET_VER
 #   $ LLVM_TARGET_VER=4.0
+#
 # * Build:
 #   $ docker-compose build
 #
