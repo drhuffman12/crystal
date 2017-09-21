@@ -2,6 +2,11 @@ FROM crystallang/crystal
 
 WORKDIR /opt/crystal-head
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends apt-utils libreadline6 libreadline6-dev build-essential curl \
+        libevent-dev libssl-dev libxml2-dev libyaml-dev libgmp-dev git wget && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 ENV CMAKE_BUILD_TYPE=Release
 ENV CRYSTAL_CONFIG_VERSION HEAD
 ENV CRYSTAL_CONFIG_PATH lib:/opt/crystal-head/src:/opt/crystal-head/libs
@@ -13,11 +18,6 @@ ENV LLVM_TARGET_VER=${LLVM_TARGET_VER:-LLVM_TARGET_VER_DEFAULT}
 
 ENV CC=clang-${LLVM_TARGET_VER}
 ENV PATH /opt/crystal-head/bin:/usr/lib/llvm-${LLVM_TARGET_VER}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends apt-utils libreadline6 libreadline6-dev build-essential curl \
-        libevent-dev libssl-dev libxml2-dev libyaml-dev libgmp-dev git wget && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key| apt-key add - && \
     apt-get update && \
